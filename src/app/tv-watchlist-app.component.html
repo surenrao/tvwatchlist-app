@@ -7,19 +7,12 @@
       <h2>{{selectedShow.name}}</h2>
       <img [alt]="selectedShow.name" [src]="selectedShow.image.banner[0]" [title]="selectedShow.name">
       <div [innerHTML]="selectedShow.summary" style="text-align:justify;"></div>
-      <md-list>
-        <h3 md-subheader>Folders</h3>
-        <md-list-item *ngFor="let episode_id of getKeys(selectedShow.episode_list)">
-            <md-icon md-list-avatar>folder</md-icon>
-            <h4 md-line>{{selectedShow.episode_list[episode_id].name}}</h4>
+      <md-list dense>
+        <h3 md-subheader>Episodes</h3>
+        <md-list-item *ngFor="let episode_id of getKeys(selectedShow.episode_list)" >
+            <a md-line [innerHTML]="getEpisodeName(selectedShow.episode_list[episode_id])"></a>
         </md-list-item>
         <md-divider></md-divider>
-        <h3 md-subheader>Notes</h3>
-        <md-list-item *ngFor="let note of notes">
-            <md-icon md-list-avatar>note</md-icon>
-            <h4 md-line>{{note.name}}</h4>
-            <p md-line class="demo-2"> {{note.updated}} </p>
-        </md-list-item>
       </md-list>
       <button md-button (click)="sidenav.close()">Close</button>
     </div>

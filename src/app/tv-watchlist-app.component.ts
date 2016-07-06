@@ -47,6 +47,11 @@ export class TvWatchlistAppComponent implements OnInit {
     return Object.keys(obj);
   }
 
+  getEpisodeName(episode:any){
+    let tick = episode.seen ? '&#10004;':''; 
+    return `${episode.counter}.(${episode.season}x${episode.number}) ${episode.name} ${tick}`;
+  }
+
   ngOnInit(){
     this.mockDataService.restoreData()
                      .subscribe(
